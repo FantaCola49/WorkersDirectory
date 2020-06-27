@@ -1,0 +1,18 @@
+﻿@model WEB_DB_Workers.Models.UsersGrid
+@{
+    ViewBag.Title = "Users page";
+}
+@using (@Html.BeginForm())
+{
+    <div>
+        <h3>Users list:</h3>
+        @if (TempData["message"] != null)
+        {<div class="text-success">@TempData["message"]</div>}
+        @if (TempData["error"] != null)
+        {<div class="text-warning"><span class="alert">ERROR:</span> @TempData["error"]</div>}
+        @Html.Partial("List")
+        <p>
+            <input type="submit" name="onNewUser" value="New user" />
+        </p>
+    </div>
+}
