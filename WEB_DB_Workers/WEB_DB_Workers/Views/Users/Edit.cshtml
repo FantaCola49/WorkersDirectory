@@ -1,0 +1,33 @@
+﻿@model WEB_DB_Workers.Models.UserModel
+@{
+    ViewBag.Title = "Edit " + Html.DisplayNameForModel().ToString().ToLower();
+}
+<h2>@ViewBag.Title @Model.User.Loginname</h2>
+@using (@Html.BeginForm("Edit", "Users", FormMethod.Post))
+{
+    @Html.HiddenFor(m => Model.User.UserID)
+    <div>
+        @Html.LabelFor(m => Model.User.Loginname)
+        @Html.EditorFor(m => Model.User.Loginname)
+        @Html.ValidationMessageFor(m => Model.User.Loginname)
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.User.Language)
+        @Html.DropDownListFor(m => Model.User.Language.LanguageID, Model.SelectLanguages())
+        @Html.ValidationMessageFor(m => Model.User.Language.LanguageID)
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.User.Email)
+        @Html.EditorFor(m => Model.User.Email)
+        @Html.ValidationMessageFor(m => Model.User.Email)
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.User.SupporterTier)
+        @Html.EditorFor(m => Model.User.SupporterTier)
+        @*@Html.EnumDropDownListFor(m => Model.User.SupporterTier)*@
+        @*@Html.DropDownListFor(m => m.Model.User.SupporterTier, new SelectList(Enum.GetNames(typeof(Example_Users.Domain.Supporter))))*@
+        @Html.ValidationMessageFor(m => Model.User.SupporterTier)
+    </div>
+    <br />
+    <p><input type="submit" name="action" value="Save" /> <input type="submit" name="action" value="Remove" onclick="javascript:return confirm('Are you sure?');" /> <input type="submit" name="action" value="Cancel" /></p>
+}
